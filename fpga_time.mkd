@@ -15,7 +15,6 @@
 起始于芯片的输入引脚，终止于目标寄存器的d或者t输入端。传输线路包括芯片的输入缓冲器以及路径两个端点之间的所有组合逻辑。
 计算公式
 <img src="http://chart.googleapis.com/chart?cht=tx&chl=t_{SU-PAD}">
-
 =Pad-to-setup路径延迟-clock Input 路径延迟 
 
 ####clock-pad-to-output-pad
