@@ -1,0 +1,65 @@
+1. `define（全局） parameter localparam(state mechine)
+1. 用户定义原语(UDP)
+1.  不使用内嵌编译选项 //synposys full_case parallel_case // synposys translate_on/off
+1. part_select item[index*4 +:index] // index 可以是变量，简短代码
+1. 位数扩展，条件表达式，算数表达式，signed会扩展符号位
+1. signed 只有所有的变量是signed类型，才按signed运算，否则转换成无符号的
+1. 仿真与综合不一样的地方 比较 x和z
+2. 连续赋值可以使用 类似 assign {a,b} = c+d;
+1. 指定线网的驱动强度 assign (strong1,strong0) a= b; // 1 和0的强度
+1. 门级 上下拉 pullup ,pulldown ,pullup (strong1) p1 (neta);
+1. defparam 用 DFF#(.delay(12)) U1 （）； 形式代替
+1. $clog2() clog2(x)=round_up(log2(x))
+1. ** 指数
+1. 实数不能直接在不同模块之间之间传递，需要间接 $realtobits() $bitstoreal()
+##系统函数
+###显示任务
+1. $display() $write() ; 功能类似，display会自动加换行符， %m输出当前显示任务所处的模块 任务 函数 或者命名块
+1. 显示信号强度 %v 显示时间 %t（$timeformat())
+1. 探测任务
+1. 1. $strobe() 类似于display 提供指定时间显示仿真数据的能力,例如在always里面使用
+1. 2. 监控任务$monitor() 监视和显示变量，在变量改变的时候输出，经常结合使用$time 使用,$monitoron() $monitoroff()
+###文件操作
+1. mcd 文件句柄， MSB=1 verilog2001 最多同时打开2**31个文件； MSB=0 verilog1995 最多同时打开31个文件
+1. mcd=$fopen(); $fclose(mcd)，$fopen()不加打开类型则为 verilog1995 加打开类型则verilog2001
+1. 文件输出 $fdisplay() $fwrite() $fstrobe() $fmonitor()
+2. 字符串输出，不直接输出到文件中， $sformat() $swrite()
+1. 字符读取c=$fgetc(fd)
+1. read one  line  $fgets(str,fd) ; if error return 0,and useing $ferror to know the error type
+1. 读格式化数据 $fscanf(fd,format,args); $sscanf(str，format，args)可以从字符串中读取数据,赋值给args
+1. 读二进制文件 $fread(mem,fd,start,count) 大端模式
+1. 文件定位 pos=$ftell(fd); $fseek $rewind
+1. 刷新输出$fflush(msc or fd or empty)
+1. $feof(fd) 检查文件尾部， 到达返回非零，否则返回0
+1. $readmemh("filename", memory_name, start_addr,finish_addr);
+###时间
+1. $printtimescale(module_name or empty),empty : 显示当前模块的时间精度
+1. $timeformat(units_number,precision_number,suffix_string, minimum_field_width)
+1. 时间$time()// return 64-bit integer $stime()//32bit integer $realtime()// real time 实数
+###转换函数
+1. $itor() $rtoi 实数和整数之间的转换，直接截断
+1. $realtobits() $bitstoreal()
+###概率分布
+1. $random %b return [-b+1:b-1]
+2. $dist_functions 
+ // 一系列函数，均匀分布，正太分布等
+###数学运算
+|  verilog    | c_language           |
+|-------------|----------------------|
+| $ln(x)      | log(x)               |
+| $log10(x)   | log10(x)             |
+| $exp(x)     | exp(x)               |
+| $sqrt(x)    | sqrt(x)              |
+| $pow(x,y)   | x**y                 |
+| $floor(x)   | Floor                |
+| $ceil(x)    | ceil(x)              |
+| $sin(x)     | sin(x)               |
+| $cos(x)     | cos(x)               |
+| $tan(x)     | tan(x)               |
+| $asin(x)    | asin(x)              |
+| $acos(x)    | acos(x)              |
+| $atan(x)    | atan(x)              |
+| $atan2(x,y) | atan2(x,y) atan(x/y) |
+###波形记录
+VCD文件
+
