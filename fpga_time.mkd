@@ -13,7 +13,8 @@
 起始于芯片的输入引脚，终止于寄存器、锁存器的D或者T输入端，或者存储器的输入端。路径延迟是数据从输入引脚进入芯片，经过组合逻辑和布线逻辑和布线网络到达目标寄存器的所需最大时间
 ####setup-to-clock-at-the-pad
 起始于芯片的输入引脚，终止于目标寄存器的d或者t输入端。传输线路包括芯片的输入缓冲器以及路径两个端点之间的所有组合逻辑。
-计算公式<img src="http://chart.googleapis.com/chart?cht=tx&chl= t_{SU_PAD}=" style="border:none;"> Pad-to-setup路径延迟-clock Input 路径延迟 
+计算公式
+<img src="http://chart.googleapis.com/chart?cht=tx&chl= t_{SU-PAD}= "> Pad-to-setup路径延迟-clock Input 路径延迟 
 
 ####clock-pad-to-output-pad
  起始于芯片的输入引脚，经过寄存器的时钟输入端，终止于芯片的输出引脚。
