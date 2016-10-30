@@ -1,7 +1,21 @@
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
-#时序路径的分类
+###时序路径的分类
 
-##clock-to-setup
-起源于源寄存器的时钟输入端， 终止于目标寄存器的D或者T输入端。 延迟包括源寄存器的输出延迟 两级寄存器之间的逻辑和布线延迟以及目标寄存器的建立时间
+####clock-to-setup
+起源于源寄存器的时钟输入端， 终止于目标寄存器的D或者T输入端。 延迟包括源寄存器的输出延迟<img src="http://chart.googleapis.com/chart?cht=tx&chl= t_{c_q}" style="border:none;"> 两级寄存器之间的逻辑和布线延迟以及目标寄存器的建立时间
 <img src="http://chart.googleapis.com/chart?cht=tx&chl=t_{su}" style="border:none;">
+####clock-to-pad
+起源于源寄存器的时钟输入端，终止于芯片的一个输出引脚。数据从源寄存器的输出延迟，经过逻辑和布线延迟，最后离开芯片的最大时间。
+####clock Input 路径
+时钟输入路径，起始于芯片的输入引脚，终止于目标寄存器的时钟端口或者锁存器的使能端口。clock Input 路径主要用于系统级的（芯片与芯片之间的通信）的时序设计。
+####Pad-to-setup
+起始于芯片的输入引脚，终止于寄存器、锁存器的D或者T输入端，或者存储器的输入端。路径延迟是数据从输入引脚进入芯片，经过组合逻辑和布线逻辑和布线网络到达目标寄存器的所需最大时间
+####setup-to-clock-at-the-pad
+起始于芯片的输入引脚，终止于目标寄存器的d或者t输入端。传输线路包括芯片的输入缓冲器以及路径两个端点之间的所有组合逻辑。
+计算公式<img src="http://chart.googleapis.com/chart?cht=tx&chl= t_{SU_PAD}=" style="border:none;"> Pad-to-setup路径延迟-clock Input 路径延迟 
+
+####clock-pad-to-output-pad
+ 起始于芯片的输入引脚，经过寄存器的时钟输入端，终止于芯片的输出引脚。
+####Pad-to-Pad
+起始于芯片的输入引脚，终止于芯片的输出引脚，包括中间的所有组合逻辑。

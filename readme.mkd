@@ -1,4 +1,4 @@
 ##FPGA 学习笔记
-###[时序分析笔记](./fpgaTime.html)
+###[时序分析笔记](./fpga_time.mkd)
 ###[verilog 笔记](./verilog.mkd)
 
